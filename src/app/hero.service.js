@@ -10,26 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mock_heroes_1 = require('./mock-heroes');
-var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 var HeroService = (function () {
-    function HeroService(jsonp) {
-        this.jsonp = jsonp;
-        // private httpUrl = 'http://api.worldbank.org/countries/us/indicators/SH.XPD.PRIV.ZS?date=2000:2002&format=jsonP&prefix=JSONP_CALLBACK';
-        this.httpUrl = 'http://mysafeinfo.com/api/data?list=englishmonarchs&format=jsonP&callback=JSONP_CALLBACK';
+    function HeroService() {
     }
     HeroService.prototype.getHeroes = function () {
         return Promise.resolve(mock_heroes_1.HEROES);
     };
-    HeroService.prototype.test = function () {
-        console.log("this is good");
-        this.jsonp.request(this.httpUrl, { method: 'Get' }).subscribe(function (data) {
-            console.log(data._body);
-        });
-    };
     HeroService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Jsonp])
+        __metadata('design:paramtypes', [])
     ], HeroService);
     return HeroService;
 }());
