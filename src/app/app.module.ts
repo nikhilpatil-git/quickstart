@@ -8,7 +8,7 @@ import { HeroDetailComponent } from './hero-detail.component'
 import { HeroesComponent } from "./heroes.component";
 import { HeroService } from "./hero.service"
 import { DashboardComponent } from "./dashboard.component"
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 
 
@@ -37,6 +37,7 @@ import { RouterModule } from '@angular/router';
       }
     ])
   ],
+  exports: [ RouterModule ],
   declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ HeroService ]

@@ -7,15 +7,11 @@ import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector:'my-hero-detail',
-  template: `
-  <div *ngIf="hero">
-    <h2>Selected hero is {{hero.name}} with id {{hero.id}}</h2>
-  </div>
-  `
+  templateUrl: './app/templates/hero-detail.component.html'
 })
 
 export class HeroDetailComponent implements OnInit{
-  @Input()
+
   hero: Hero;
 
   constructor(
@@ -25,7 +21,12 @@ export class HeroDetailComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-
+    this.route.params
+      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+      .subscribe(hero => this.hero = hero);
   }
 
+  goBack(): void{
+    this.location.back();
+  }
 }
